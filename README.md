@@ -1,7 +1,7 @@
 # Sorting
 Simple sorting algorithm application to practice using interfaces in TypeScript and NodeJS. Implement the sorting algorithm once and reuse it as much as possible for different data types.
 
-## tsc compiler config
+## tsc Compiler Config
 `tsc --init` which creates the 'tsconfig.json' file. A lot of options but what we want is to specify our build and source directory. By default, tsc will compile the js file in the same directory.
 We can now modify `"rootDir": "./src"` and `"outDir": "./build"`.
 
