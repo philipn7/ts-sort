@@ -1,0 +1,18 @@
+{
+  "name": "sort",
+  "version": "1.0.0",
+  "description": "Simple sorting algorithm application to practice using interfaces in TypeScript and NodeJS. Implement the sorting algorithm once and reuse it as much as possible for different data types.",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.3.0",
+    "nodemon": "^2.0.13"
+  }
+}
