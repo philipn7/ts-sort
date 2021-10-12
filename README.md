@@ -91,8 +91,20 @@ The keyword used in TypeScript / Javascript is `extends`.
 ## Abstract Class
 We no longer want to instantiate the Sorter class. What we want is an abstract class we can use as a parent to the different collection classes.
 
+Abstract Classes:
 - Can't be used to create an object directly
 - Only used as a parent class
 - Can contain real implementation for some methods
 - The implemented methods can refer other methods that don't exist yet
 - Can make child classes promise to implement some other method
+
+There are methods and properties that our sort() method refer to but are not implemented in the abstract class. We can promise TypeScript the child classes will implement them using the `abstract` keyword.
+
+| Interfaces             	| Inheritance / Abstract Classes   |
+| ------------------------- | -------------------------------- |
+| Sets up a contract between different classes | Same |
+| Use when we have very different objects that we want to work together | Use when we are trying to build up a definition of an object |
+| Promotes loose coupling | Strongly couples together |
+
+## Overview
+In order to make our algorithm generic, we first tried implementing all the different cases in one class using type guards. This got messy. Interfaces were then used to separate each type into classes. Finally, we refactored again using abstract classes so that each class could inherit the sort() method.

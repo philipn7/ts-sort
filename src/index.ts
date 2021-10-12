@@ -1,4 +1,3 @@
-import { Sorter } from './Sorter'
 import { NumbersCollection } from './NumbersCollection';
 import { CharactersCollection } from './CharactersCollection'
 
@@ -8,6 +7,5 @@ import { CharactersCollection } from './CharactersCollection'
 // console.log(numbersCollection.data);
 
 const charactersCollection = new CharactersCollection('arstueneincxEINYITAA');
-const sorter = new Sorter(charactersCollection);
-sorter.sort();
+charactersCollection.sort();
 console.log(charactersCollection.data); 
