@@ -1,5 +1,5 @@
 # Sorting
-Simple sorting algorithm application to practice using interfaces in TypeScript and NodeJS. Implement the sorting algorithm once and reuse it as much as possible for different data types.
+Simple sorting algorithm application to practice using interfaces in TypeScript and NodeJS. Implement the sorting algorithm once and reuse it as much as possible for different data types. As part of the 'TypeScript: The Complete Developer's Guide'
 
 ## tsc Compiler Config
 `tsc --init` which creates the 'tsconfig.json' file. A lot of options but what we want is to specify our build and source directory. By default, tsc will compile the js file in the same directory.
@@ -42,10 +42,11 @@ if (typeof this.collection === 'string') {
 ```
 Once the object passes the type guard, TypeScript allows you to use those methods. Use 'typeof' for primitives: number, string, bool. 
 
-This is ***bad*** code though. Would need new implementation of the algo for each new type in this single class.
+This is ***bad*** code though. Would need to add a new implementation of the algo for each new type in this single class.
 
 ## Solution
-Abstract the specific data handling away into it's own separate class. The Sorter class is generic. Each type will have it's own separate class with its own way of handling compare and swap.
+## Interfaces
+Abstract the specific data handling away into it's own separate class. The Sorter class is generic. Each 'Sortable' type will have it's own separate class with its own way of handling compare and swap.
 
 ```
 interface Sortable {
@@ -73,5 +74,25 @@ export class Sorter {
 }
 ```
 
-As long as the collection meets the interface definition above then it is possible to sort it in our generic bubble sort algorithm. The significance of this is that we don't need to know how to sort the unique data types. If we can implement compare and swap than it can be sorted!
+As long as the collection meets the interface definition above then it is possible to sort it in our generic bubble sort algorithm. The significance of this is that we don't need to know how to sort the unique data types. If we can implement compare and swap than it can be sorted! We also avoid having one monster class.
 
+## Inheritance
+The way we call sort() looks like this:
+```
+const charactersCollection = new CharactersCollection('arstueneincxEINYITAA');
+const sorter = new Sorter(charactersCollection);
+sorter.sort();
+```
+
+What if we want to call sort as a method on the object instead? Like this: `charactersCollection.sort()`. The collection classes can inherit the sort() method instead.
+
+The keyword used in TypeScript / Javascript is `extends`.
+
+## Abstract Class
+We no longer want to instantiate the Sorter class. What we want is an abstract class we can use as a parent to the different collection classes.
+
+- Can't be used to create an object directly
+- Only used as a parent class
+- Can contain real implementation for some methods
+- The implemented methods can refer other methods that don't exist yet
+- Can make child classes promise to implement some other method
